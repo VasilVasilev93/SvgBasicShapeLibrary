@@ -30,9 +30,14 @@ private:
 	const bool isNumber(const char *);
 	const bool isNum(const char);
 
+	SvgBasicShapeReader(const SvgBasicShapeReader &);
+	SvgBasicShapeReader &operator=(const SvgBasicShapeReader &);
+
 public:
 	SvgBasicShapeReader();
 	~SvgBasicShapeReader();
 	SvgBasicShape **readShapes(const char *);
+
+	const int getShapesSize();
 };
 #endif

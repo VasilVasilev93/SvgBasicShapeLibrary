@@ -79,7 +79,6 @@
     <ClCompile Include="SvgBasicShapeFactory.cpp" />
     <ClCompile Include="SvgBasicShapeWriter.cpp" />
     <ClCompile Include="SvgFile.cpp" />
-    <ClCompile Include="SvgFileValidator.cpp" />
     <ClCompile Include="SvgBasicShapeReader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -94,8 +93,8 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="SvgBasicShape.h" />
     <ClInclude Include="SvgBasicShapeFactory.h" />
-    <ClInclude Include="SvgBasicShapeWriter.h" />
     <ClInclude Include="SvgBasicShapeReader.h" />
+    <ClInclude Include="SvgBasicShapeWriter.h" />
     <ClInclude Include="SvgFile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

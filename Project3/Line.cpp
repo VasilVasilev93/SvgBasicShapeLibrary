@@ -12,6 +12,16 @@ Line::Line() : SvgBasicShape() {
 	y2 = 0;
 }
 
+Line::Line(const char *fill, const char *stroke, const int strokeWidth,
+		   const int x1, const int x2, const int y1, const int y2) 
+		   : SvgBasicShape(fill, stroke, strokeWidth) {
+	
+	setX1(x1);
+	setX2(x2);
+	setY1(y1);
+	setY2(y2);
+}
+
 void Line::setX1(int x1) {
 	this->x1 = x1;
 }

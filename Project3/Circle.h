@@ -8,8 +8,15 @@ class Circle : public SvgBasicShape {
 private:
 	int cx, cy;
 	unsigned int radius;
+
 	friend class SvgBasicShapeFactory;
+
 	Circle();
+	Circle(const char *, const char *, const int,
+           const int, const int, const int);
+
+	Circle(const Circle &other);
+	Circle &operator=(const Circle &other);
 
 public:
 	static const std::regex regex;

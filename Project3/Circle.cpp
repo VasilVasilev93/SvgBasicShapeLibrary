@@ -12,6 +12,15 @@ Circle::Circle() : SvgBasicShape() {
 	cy = 0;
 }
 
+Circle::Circle(const char *fill, const char *stroke, const int strokeWidth,
+		   const int cx, const int cy, const int radius) 
+		   : SvgBasicShape(fill, stroke, strokeWidth) {
+	
+	setCx(cx);
+	setCy(cy);
+	setRadius(radius);
+}
+
 void Circle::setRadius(unsigned int radius) 
 {
 	this->radius = radius;

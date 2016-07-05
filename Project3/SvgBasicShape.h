@@ -12,6 +12,7 @@ private:
 
 public:
 	SvgBasicShape();
+	SvgBasicShape(const char *, const char *, const int);
 	virtual ~SvgBasicShape();
 
 	const unsigned int getStrokeWidth();

@@ -181,3 +181,7 @@ const bool SvgBasicShapeReader::isNumber(const char *value) {
 int SvgBasicShapeReader::parseInt(const char *value) {
 	return atoi(value);
 }
+
+const int SvgBasicShapeReader::getShapesSize() {
+	return shapesIndex;
+}

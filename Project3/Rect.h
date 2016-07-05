@@ -8,8 +8,17 @@ class Rect : public SvgBasicShape{
 private:
 	unsigned int rx, ry, width, height;
 	int x, y;
+	
 	friend class SvgBasicShapeFactory;
+	
 	Rect();
+
+	Rect(const char *, const char *, const int,
+         const int, const int, const int, 
+		 const int, const int, const int);
+
+	Rect(const Rect &other);
+	Rect &operator=(const Rect &other);
 
 public:
 	static const std::regex regex;

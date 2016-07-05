@@ -1,16 +1,20 @@
 #include <iostream>
-#include "SvgBasicShapeReader.h"
-#include "SvgBasicShapeWriter.h"
+#include "SvgFile.h"
 
 using namespace std;
 
 int main() {
 
-	SvgBasicShapeReader *reader = new SvgBasicShapeReader();
-	SvgBasicShape **shapes = reader->readShapes("coursesvg.svg");
-	SvgBasicShapeWriter *writer = new SvgBasicShapeWriter();
+	//SvgBasicShapeReader *reader = new SvgBasicShapeReader();
+	//SvgBasicShape **shapes = reader->readShapes("coursesvg.svg");
+	//SvgBasicShapeWriter *writer = new SvgBasicShapeWriter();
 
-	writer->writeShapes("test.svg", shapes, 5);
+	SvgFile *svg = new SvgFile("coursesvg.svg");
+
+	svg->open();
+	svg->erase(0);
+	svg->create("line", "green", 400, 300, 700, 100, 0, 25, "green", 5);
+	svg->save();
 
 	return 0;
 }

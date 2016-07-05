@@ -7,8 +7,16 @@
 class Line : public SvgBasicShape {
 private:
 	int x1, x2, y1, y2;
+
 	friend class SvgBasicShapeFactory;
+
 	Line();
+
+	Line(const char *, const char *, const int,
+         const int, const int, const int, const int);
+
+	Line(const Line &other);
+	Line &operator=(const Line &other);
 
 public:
 	static const std::regex regex;

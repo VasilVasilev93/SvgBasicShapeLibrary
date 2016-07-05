@@ -20,6 +20,11 @@ SvgBasicShape::SvgBasicShape() {
 	strokeWidth = 0;
 }
 
+SvgBasicShape::SvgBasicShape(const char *fill, const char *stroke, const int strokeWidth) {
+	setFill(fill);
+	setStroke(stroke);
+	setStrokeWidth(strokeWidth);
+}
 SvgBasicShape::~SvgBasicShape() {
 	delete[] fill;
 	delete[] stroke;

@@ -11,6 +11,23 @@ SvgBasicShapeWriter::SvgBasicShapeWriter() {
 	content[0] = '\0';
 }
 
+SvgBasicShapeWriter::SvgBasicShapeWriter(const SvgBasicShapeWriter &other) {
+	content = new char[MAX_XML_LEN];
+	strcpy(content, other.content);
+}
+
+SvgBasicShapeWriter& SvgBasicShapeWriter::operator=(const SvgBasicShapeWriter &other) {
+	if(this != &other) {
+		delete[] content;
+
+		content = new char[MAX_XML_LEN];
+		strcpy(content, other.content);
+	}
+
+	return *this;
+}
+
+
 SvgBasicShapeWriter::~SvgBasicShapeWriter() {
 	delete[] content;
 }

@@ -12,22 +12,31 @@ private:
 	SvgBasicShapeReader *reader;
 	SvgBasicShapeWriter *writer;
 
+	char *filePath;
+	bool isOpenFake;
+
 	void deleteShapes();
 	void shiftShapes(int);
 
+	SvgFile& operator=(const SvgFile &);
+	SvgFile(const SvgFile &);
+
 public:
-	SvgFile();
+	SvgFile(char *filePath);
+
 	~SvgFile();
 
-	void create(char *, char *, char *, int, int, int, int, int, int, int);
+	void open();
+	void create(const char *, const char *, const int, const int, const int,
+		const int, const int, const int,
+		const char *, const int);
+
 	void erase(int);
-	void translate(int, int, int);
-	void translate(int, int);
+	void translate(int, int, int index = 0);
 	void print();
 	void within(char *, int, int, int, int);
 	void save();
 	void saveAs(char *);
-	void open(char *);
 	void close();
 
 	void setWriter(SvgBasicShapeWriter *);

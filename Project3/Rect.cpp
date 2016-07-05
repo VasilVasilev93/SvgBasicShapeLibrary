@@ -15,6 +15,19 @@ Rect::Rect() : SvgBasicShape() {
 	height = 0;
 }
 
+Rect::Rect(const char *fill, const char *stroke, const int strokeWidth,
+		   const int x, const int y, const int width, const int height,
+		   const int rx, const int ry) 
+		   : SvgBasicShape(fill, stroke, strokeWidth) {
+	
+	setX(x);
+	setY(y);
+	setWidth(width);
+	setHeight(height);
+	setRx(rx);
+	setRy(ry);
+}
+
 void Rect::setRx(unsigned int rx) {
 	this->rx = rx;
 }
