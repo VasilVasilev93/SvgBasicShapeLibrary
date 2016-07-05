@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+	<rect fill="yellow" stroke="navy" stroke-width="10" height="200" width="400" y="100" x="400"/>
+	 <rect x="100" y="100" width="400" height="200" rx="50" fill="green" />
+	<rect x="1" y="1" width="1198" height="398" fill="none" stroke="blue" stroke-width="2"/>
+	<circle cx="600" cy="200" r="100" fill="red" stroke="blue" stroke-width="10"  />
+	<line x1="900" y1="300" x2="1100" y2="100" stroke-width="25" stroke="green" />
+</svg>
