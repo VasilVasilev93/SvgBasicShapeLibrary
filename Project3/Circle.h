@@ -19,6 +19,7 @@ private:
 	Circle &operator=(const Circle &other);
 
 public:
+	~Circle();
 	static const std::regex regex;
 	static const char *simpleClassName;
 
@@ -28,12 +29,17 @@ public:
 
 	void setProperty(const char *, const int);
 
-	void print();
-	void translate(int, int);
+	virtual void print();
+	virtual void translate(int, int);
 
-	const char *toXmlElement();
-	const char *toPropertyValue(const char *, const int);
-	const char *toPropertyValue(const char *, const char *);
+	virtual const char *toXmlElement();
+	virtual const char *toPropertyValue(const char *, const int);
+	virtual const char *toPropertyValue(const char *, const char *);
+
+	virtual int getX();
+	virtual int getY();
+	virtual int getWidth();
+	virtual int getHeight();
 
 };
 

@@ -1,5 +1,6 @@
 #include "SvgFile.h"
 #include "SvgBasicShapeFactory.h"
+#include "InvalidBasicShapeClassNameException.h"
 #include <iostream>
 
 SvgFile::SvgFile(char *filePath) {
@@ -96,7 +97,15 @@ void SvgFile::print() {
 }
 
 void SvgFile::within(char *shapeClassName, int x, int y, int w, int h) {
-	//TODO
+	try {
+		SvgBasicShape *toDelete = SvgBasicShapeFactory::createShape(shapeClassName);
+		delete toDelete;
+	}
+	catch (InvalidBasicShapeClassNameException &e) {
+		std::cout << e.what() << '\n';
+	}
+	
+	//todo
 }
 
 void SvgFile::save() {

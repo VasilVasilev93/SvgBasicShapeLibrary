@@ -17,7 +17,7 @@ SvgBasicShape *SvgBasicShapeFactory::createShape(const char *simpleClassName) {
 	else if (strcmp(simpleClassName, Line::simpleClassName) == 0) {
 		return new Line();
 	} else {
-		throw new InvalidBasicShapeClassNameException(simpleClassName);
+		throw InvalidBasicShapeClassNameException(simpleClassName);
 	}
 }
 
@@ -43,6 +43,6 @@ SvgBasicShape *SvgBasicShapeFactory::createShape(const char *shapeName, const ch
 		//width & height will be x2 & y2 for line shape respectively
 		return new Line(fill, stroke, strokeWidth, x, y, width, height);
 	} else {
-		throw new InvalidBasicShapeClassNameException(shapeName);
+		throw InvalidBasicShapeClassNameException(shapeName);
 	}
 }

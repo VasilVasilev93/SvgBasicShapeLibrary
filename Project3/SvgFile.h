@@ -34,7 +34,7 @@ public:
 	void erase(int);
 	void translate(int, int, int index = 0);
 	void print();
-	void within(char *, int, int, int, int);
+	void within(char *shapeClassName, int x, int y, int width, int height);
 	void save();
 	void saveAs(char *);
 	void close();

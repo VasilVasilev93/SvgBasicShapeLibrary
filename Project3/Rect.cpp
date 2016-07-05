@@ -1,6 +1,7 @@
 #include "Rect.h"
 #include "InvalidSvgBasicShapeFieldException.h"
 #include "InvalidSvgElementPropertyValueException.h"
+#include <iostream>
 #include <string>
 
 const std::regex Rect::regex = std::regex(".*<.*rect.*>.*");
@@ -13,6 +14,10 @@ Rect::Rect() : SvgBasicShape() {
 	y = 0;
 	width = 0;
 	height = 0;
+}
+
+Rect::~Rect() {
+
 }
 
 Rect::Rect(const char *fill, const char *stroke, const int strokeWidth,
@@ -77,10 +82,6 @@ void Rect::setProperty(const char *name, int value) {
 		SvgBasicShape::setProperty(name, value);
 	}
 }
-
-void Rect::print() { }
-
-void Rect::translate(int x, int y) { }
 
 const char *Rect::toXmlElement() {
 	char *element = new char[MAX_SHAPE_LEN];
@@ -153,4 +154,32 @@ const char *Rect::toPropertyValue(const char* nameAndEqualSign, const char *valu
 	strcat(propAndvalue, "\"");
 
 	return propAndvalue;
+}
+
+void Rect::print() {
+	std::cout << "rect " << x << " " << y<< " " << width << " " 
+		      << height << " " <<rx << " " << ry << " " << getFill() << " "
+			  << getStroke() << " " << getStrokeWidth() << '\n';
+}
+
+void Rect::translate(int x, int y) {
+	this->x += x;
+	this->y += y;
+}
+
+
+int Rect::getX() {
+	return x;
+}
+
+int Rect::getY() {
+	return y;
+}
+
+int Rect::getWidth() {
+	return width;
+}
+
+int Rect::getHeight() {
+	return height;
 }

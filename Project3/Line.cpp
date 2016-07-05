@@ -1,5 +1,6 @@
 #include "Line.h"
 #include "InvalidSvgBasicShapeFieldException.h"
+#include <iostream>
 #include <string>
 
 const std::regex Line::regex = std::regex(".*<.*line.*>.*");
@@ -10,6 +11,10 @@ Line::Line() : SvgBasicShape() {
 	x2 = 0;
 	y1 = 0;
 	y2 = 0;
+}
+
+Line::~Line() {
+
 }
 
 Line::Line(const char *fill, const char *stroke, const int strokeWidth,
@@ -54,10 +59,6 @@ void Line::setProperty(const char *name, const int value) {
 		SvgBasicShape::setProperty(name, value);
 	}
 }
-
-void Line::print() { }
-
-void Line::translate(int x, int y) { }
 
 const char *Line::toXmlElement() {
 	char *element = new char[MAX_SHAPE_LEN];
@@ -125,3 +126,21 @@ const char *Line::toPropertyValue(const char* nameAndEqualSign, const char *valu
 
 	return propAndvalue;
 }
+
+void Line::print() {
+	std::cout << "line " << x1 << " " << y1 << " " 
+			  << x2 << " " << y2 << " " << getFill() << " " 
+			  << getStroke() << " " << getStrokeWidth() << '\n';
+}
+
+void Line::translate(int x, int y) {
+	x1 += x;
+	x2 += x;
+	y1 += y;
+	y2 += y;
+}
+
+int Line::getX() { return x1; };
+int Line::getY() { return y1; };
+int Line::getWidth() { return x1; };
+int Line::getHeight() { return y1; };

@@ -19,6 +19,7 @@ private:
 	Line &operator=(const Line &other);
 
 public:
+	~Line();
 	static const std::regex regex;
 	static const char *simpleClassName;
 
@@ -27,14 +28,19 @@ public:
 	void setY1(int);
 	void setY2(int);
 
-	void setProperty(const char *, const int);
+	virtual void setProperty(const char *, const int);
 
 	void print();
 	void translate(int, int);
 
-	const char *toXmlElement();
-	const char *toPropertyValue(const char *, const int);
-	const char *toPropertyValue(const char *, const char *);
+	virtual const char *toXmlElement();
+	virtual const char *toPropertyValue(const char *, const int);
+	virtual const char *toPropertyValue(const char *, const char *);
+
+	virtual int getX();
+	virtual int getY();
+	virtual int getWidth();
+	virtual int getHeight();
 
 };
 

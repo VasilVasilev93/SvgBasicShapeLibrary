@@ -1,6 +1,7 @@
 #include "Circle.h"
 #include "InvalidSvgBasicShapeFieldException.h"
 #include "InvalidSvgElementPropertyValueException.h"
+#include <iostream>
 #include <string>
 
 const std::regex Circle::regex = std::regex(".*<.*circle.*>.*");
@@ -10,6 +11,10 @@ Circle::Circle() : SvgBasicShape() {
 	radius = 0;
 	cx = 0;
 	cy = 0;
+}
+
+Circle::~Circle() {
+
 }
 
 Circle::Circle(const char *fill, const char *stroke, const int strokeWidth,
@@ -47,10 +52,6 @@ void Circle::setProperty(const char *name, const int value) {
 		SvgBasicShape::setProperty(name, value);
 	}
 }
-
-void Circle::print() { }
-
-void Circle::translate(int x, int y) { }
 
 const char *Circle::toXmlElement() {
 	char *element = new char[MAX_SHAPE_LEN];
@@ -115,3 +116,27 @@ const char *Circle::toPropertyValue(const char* nameAndEqualSign, const char *va
 
 	return propAndvalue;
 }
+
+
+void Circle::print() {
+	std::cout << "circle " << cx << " " << cy << " " << getFill() << " " << getStroke() << " " << getStrokeWidth() << '\n';
+}
+
+void Circle::translate(int x, int y) {
+	this->cx += x;
+	this->cy += y;
+}
+
+int Circle::getX() {
+	return this->cx;
+}
+
+int Circle::getY() {
+	return this->cy;
+}
+
+int Circle::getWidth() {
+	return this->radius;
+}
+
+int Circle::getHeight() { return 0; }
