@@ -68,6 +68,7 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="InvalidBasicShapeClassNameException.cpp" />
     <ClCompile Include="InvalidSvgBasicShapeFieldException.cpp" />
+    <ClCompile Include="InvalidSvgElementPropertyValueException.cpp" />
     <ClCompile Include="InvalidSvgElementSyntaxException.cpp" />
     <ClCompile Include="InvalidSvgFileSyntaxException.cpp" />
     <ClCompile Include="Line.cpp" />
@@ -76,6 +77,7 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="SvgBasicShape.cpp" />
     <ClCompile Include="SvgBasicShapeFactory.cpp" />
+    <ClCompile Include="SvgBasicShapeWriter.cpp" />
     <ClCompile Include="SvgFileValidator.cpp" />
     <ClCompile Include="SvgBasicShapeReader.cpp" />
   </ItemGroup>
@@ -83,6 +85,7 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="InvalidBasicShapeClassNameException.h" />
     <ClInclude Include="InvalidSvgBasicShapeFieldException.h" />
+    <ClInclude Include="InvalidSvgElementPropertyValueException.h" />
     <ClInclude Include="InvalidSvgElementSyntaxException.h" />
     <ClInclude Include="InvalidSvgFileSyntaxException.h" />
     <ClInclude Include="Line.h" />

@@ -1,6 +1,16 @@
 #include "SvgBasicShape.h"
 #include "InvalidSvgBasicShapeFieldException.h"
+#include "InvalidSvgElementPropertyValueException.h"
+#include "Circle.h"
+#include "Rect.h"
+#include "Line.h"
 #include <string>
+
+bool SvgBasicShape::isShape(const char *simpleClassName) {
+	return std::regex_match(simpleClassName, Circle::regex) ||
+		   std::regex_match(simpleClassName, Rect::regex) ||
+		   std::regex_match(simpleClassName, Line::regex);
+}
 
 SvgBasicShape::SvgBasicShape() {
 	fill = new char[1];
@@ -13,6 +23,18 @@ SvgBasicShape::SvgBasicShape() {
 SvgBasicShape::~SvgBasicShape() {
 	delete[] fill;
 	delete[] stroke;
+}
+
+const unsigned int SvgBasicShape::getStrokeWidth() {
+	return strokeWidth;
+}
+
+const char *SvgBasicShape::getFill() {
+	return fill;
+}
+
+const char *SvgBasicShape::getStroke() {
+	return stroke;
 }
 
 void SvgBasicShape::setFill(const char* fill) {
@@ -31,12 +53,15 @@ void SvgBasicShape::setStroke(const char* stroke) {
 	strcpy(this->stroke, stroke);
 }
 
-void SvgBasicShape::setStrokeWidth(int strokeWidth) {
+void SvgBasicShape::setStrokeWidth(unsigned int strokeWidth) {
 	this->strokeWidth = strokeWidth;
 }
 
 void SvgBasicShape::setProperty(const char *name, const int value) {
 	if(strcmp(name, "stroke-width") == 0) {
+		if(value < 0) {
+			throw InvalidSvgElementPropertyValueException(name);
+		}
 		setStrokeWidth(value);
 	} 
 }

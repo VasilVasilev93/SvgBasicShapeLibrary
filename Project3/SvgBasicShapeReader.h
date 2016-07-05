@@ -5,8 +5,6 @@
 
 #include <fstream>
 
-#define MAX_SHAPE_LEN 256
-#define MAX_PROP_LEN 20
 #define INIT_SHAPES_READ_SIZE 10
 
 class SvgBasicShapeReader {
@@ -19,7 +17,7 @@ private:
 	int shapesIndex;
 	int shapesSize;
 
-	int getPropertiesStartIndex();
+	int getShapeNameAndPropertiesStartIndex(char *);
 	int getPropertyNameAndValueIndex(const int, char *);
 	int parseInt(const char *);
 
@@ -27,15 +25,10 @@ private:
 
 	void readShape();
 	void deleteShapes();
-	
-	const bool isShape();
-	const bool isCircle();
-	const bool isRect();
-	const bool isLine();
+
 	const bool isLetter(const char);
 	const bool isNumber(const char *);
 	const bool isNum(const char);
-	
 
 public:
 	SvgBasicShapeReader();

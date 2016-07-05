@@ -24,6 +24,10 @@ public:
 	void print();
 	void translate();
 
+	const char *toXmlElement();
+	const char *toPropertyValue(const char *, const int);
+	const char *toPropertyValue(const char *, const char *);
+
 };
 
 #endif

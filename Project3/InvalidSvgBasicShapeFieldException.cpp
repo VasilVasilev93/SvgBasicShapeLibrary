@@ -2,7 +2,7 @@
 #include <iostream>
 #include "InvalidSvgBasicShapeFieldException.h"
 
-char * InvalidSvgBasicShapeFieldException::msg = "is not a valid member of a Basic shape"; //todo later
+char * InvalidSvgBasicShapeFieldException::msg = "is not a valid member of svg basic shape!";
 
 InvalidSvgBasicShapeFieldException::InvalidSvgBasicShapeFieldException(const char *fieldName) {
 	this->fieldName = new char[strlen(fieldName) + 1];

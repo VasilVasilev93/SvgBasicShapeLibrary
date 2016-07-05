@@ -5,14 +5,11 @@
 #include "NoMorePropertiesInSvgElementException.h"
 #include "InvalidSvgBasicShapeFieldException.h"
 #include "InvalidSvgElementSyntaxException.h"
-#include "Line.h"
-#include "Circle.h"
-#include "Rect.h"
 
 #include <regex>
 
 SvgBasicShapeReader::SvgBasicShapeReader() {
-	shapeBuffer = new char [MAX_SHAPE_LEN]; 
+	shapeBuffer = new char [MAX_SHAPE_LEN];
 	shapesRead = new SvgBasicShape *[INIT_SHAPES_READ_SIZE];
 }
 
@@ -28,7 +25,7 @@ SvgBasicShape **SvgBasicShapeReader::readShapes(const char *file) {
 	stream.open("coursesvg.svg", std::ios::in);
 	while(stream.getline(shapeBuffer, MAX_SHAPE_LEN)) {
 		index = strlen(shapeBuffer);
-		if(isShape()) {
+		if(SvgBasicShape::isShape(shapeBuffer)) {
 			readShape();
 		}
 
@@ -44,35 +41,14 @@ SvgBasicShape **SvgBasicShapeReader::readShapes(const char *file) {
 	return shapesRead;
 }
 
-const bool SvgBasicShapeReader::isShape() {
-	return isCircle() || isRect() || isLine();
-}
-
-const bool SvgBasicShapeReader::isCircle() {
-	return std::regex_match(shapeBuffer, Circle::regex);
-
-}
-const bool SvgBasicShapeReader::isRect() {
-	return std::regex_match(shapeBuffer, Rect::regex);
-}
-const bool SvgBasicShapeReader::isLine() {
-	return std::regex_match(shapeBuffer, Line::regex);
-}
-
-
 void SvgBasicShapeReader::readShape() {
 	SvgBasicShape *shape = 0x0;
-	if(isCircle()) {
-		shape = SvgBasicShapeFactory::createCircle();
-	}
-	else if(isRect()) {
-		shape = SvgBasicShapeFactory::createRect();
-	}
-	else if(isLine()) {
-		shape = SvgBasicShapeFactory::createLine();
-	}
+	
+	char *shapeSimpleClassName = new char[MAX_PROP_LEN];
+	int propertiesIndex = getShapeNameAndPropertiesStartIndex(shapeSimpleClassName);
 
-	int propertiesIndex = getPropertiesStartIndex();
+	shape = SvgBasicShapeFactory::createShape(shapeSimpleClassName);
+
 	char *propertyName;
 	char *propertyValue;
 	while(true) {
@@ -125,7 +101,6 @@ int SvgBasicShapeReader::getPropertyNameAndValueIndex(const int index, char *pro
 	throw InvalidSvgElementSyntaxException();
 }
 
-//fix
 char *SvgBasicShapeReader::getPropertyValue(int &index) {
 	char *value = new char[MAX_PROP_LEN];
 	int valueIndex = 0;
@@ -159,7 +134,7 @@ void SvgBasicShapeReader::deleteShapes() {
 	shapesIndex = 0;
 }
 
-int SvgBasicShapeReader::getPropertiesStartIndex() {
+int SvgBasicShapeReader::getShapeNameAndPropertiesStartIndex(char *shapeSimpleClassName) {
 	char *shapeName = new char[MAX_PROP_LEN];
 	int shapeNameIndex = 0;
 	bool isReadingPropName = false;
@@ -174,16 +149,13 @@ int SvgBasicShapeReader::getPropertiesStartIndex() {
 
 		else if(isReadingPropName && c == ' ') {
 			shapeName[shapeNameIndex] = '\0';
-			if( (strcmp(shapeName, Circle::simpleClassName) == 0) ||
-			    (strcmp(shapeName, Rect::simpleClassName) == 0) ||
-			    (strcmp(shapeName, Line::simpleClassName) == 0)) {
-					delete[] shapeName;
-					return i;
-			}
-
-			else throw InvalidBasicShapeClassNameException(shapeName);
+			strcpy(shapeSimpleClassName, shapeName);
+			delete[] shapeName;
+			return i;
 		}
 	}
+
+	throw InvalidBasicShapeClassNameException(shapeName);
 }
 
 const bool SvgBasicShapeReader::isLetter(const char c) {
@@ -198,7 +170,9 @@ const bool SvgBasicShapeReader::isNumber(const char *value) {
 	int len = strlen(value);
 	for(int i = 0; i < len; i ++) {
 		if(!isNum(value[i])){
-			return false;
+			if(!(i == 0 && value[i] == '-')) {
+				return false;
+			}
 		}
 	}
 

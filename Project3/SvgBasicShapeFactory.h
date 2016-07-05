@@ -5,9 +5,7 @@
 
 class SvgBasicShapeFactory {
 public:
-	static SvgBasicShape *createCircle();
-	static SvgBasicShape *createRect();
-	static SvgBasicShape *createLine();
+	static SvgBasicShape *createShape(const char *);
 };
 
 #endif

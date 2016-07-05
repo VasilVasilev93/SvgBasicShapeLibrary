@@ -54,6 +54,12 @@
     <ClCompile Include="InvalidSvgElementSyntaxException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SvgBasicShapeWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InvalidSvgElementPropertyValueException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Rect.h">
@@ -96,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SvgBasicShapeWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidSvgElementPropertyValueException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

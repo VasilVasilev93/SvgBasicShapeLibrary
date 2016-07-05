@@ -4,14 +4,16 @@
 #include "Line.h"
 #include "Rect.h"
 
-SvgBasicShape *SvgBasicShapeFactory::createCircle() {
-		return new Circle();
-}
-
-SvgBasicShape *SvgBasicShapeFactory::createRect() {
-		return new Rect();
-}
-
-SvgBasicShape *SvgBasicShapeFactory::createLine() {
-		return new Line();
+SvgBasicShape *SvgBasicShapeFactory::createShape(const char *simpleClassName) {
+		if (strcmp(simpleClassName, Circle::simpleClassName) == 0) {
+			return new Circle();
+		}
+		else if (strcmp(simpleClassName, Rect::simpleClassName) == 0) {
+			return new Rect();
+		}
+		else if (strcmp(simpleClassName, Line::simpleClassName) == 0) {
+			return new Line();
+		} else {
+			throw new InvalidBasicShapeClassNameException(simpleClassName);
+		}
 }

@@ -6,7 +6,8 @@
 
 class Rect : public SvgBasicShape{
 private:
-	int rx, ry, x, y, width, height;
+	unsigned int rx, ry, width, height;
+	int x, y;
 	friend class SvgBasicShapeFactory;
 	Rect();
 
@@ -14,17 +15,22 @@ public:
 	static const std::regex regex;
 	static const char *simpleClassName;
 
-	void setRx(int);
-	void setRy(int);
+	void setRx(unsigned int);
+	void setRy(unsigned int);
 	void setX(int);
 	void setY(int);
-	void setWidth(int);
-	void setHeight(int);
+	void setWidth(unsigned int);
+	void setHeight(unsigned int);
 
 	void setProperty(const char *, const int);
 
 	void print();
 	void translate();
+
+	const char *toXmlElement();
+	const char *toPropertyValue(const char *, const int);
+	const char *toPropertyValue(const char *, const char *);
+
 };
 
 #endif
