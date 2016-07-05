@@ -11,6 +11,10 @@ SvgBasicShapeWriter::SvgBasicShapeWriter() {
 	content[0] = '\0';
 }
 
+SvgBasicShapeWriter::~SvgBasicShapeWriter() {
+	delete[] content;
+}
+
 void SvgBasicShapeWriter::writeShapes(const char *filePath, SvgBasicShape **shapes, const int size) {
 	delete[] content;
 	content = new char[MAX_XML_LEN];

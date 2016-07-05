@@ -17,6 +17,7 @@ private:
 	void writeContentToFile(const char *);
 public:
 	SvgBasicShapeWriter();
+	~SvgBasicShapeWriter();
 
 	void writeShapes(const char *, SvgBasicShape **, const int size);
 };

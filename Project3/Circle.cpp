@@ -41,7 +41,7 @@ void Circle::setProperty(const char *name, const int value) {
 
 void Circle::print() { }
 
-void Circle::translate() { }
+void Circle::translate(int x, int y) { }
 
 const char *Circle::toXmlElement() {
 	char *element = new char[MAX_SHAPE_LEN];

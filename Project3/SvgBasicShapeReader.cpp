@@ -1,6 +1,5 @@
 #include "SvgBasicShapeReader.h"
 #include "SvgBasicShapeFactory.h"
-#include "SvgFileValidator.h"
 #include "InvalidBasicShapeClassNameException.h"
 #include "NoMorePropertiesInSvgElementException.h"
 #include "InvalidSvgBasicShapeFieldException.h"

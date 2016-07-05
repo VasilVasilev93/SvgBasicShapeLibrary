@@ -67,7 +67,7 @@ void Rect::setProperty(const char *name, int value) {
 
 void Rect::print() { }
 
-void Rect::translate() { }
+void Rect::translate(int x, int y) { }
 
 const char *Rect::toXmlElement() {
 	char *element = new char[MAX_SHAPE_LEN];

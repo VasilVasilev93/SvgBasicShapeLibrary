@@ -28,7 +28,7 @@ public:
 	virtual void setProperty(const char *, const char *);
 
 	virtual void print() = 0;
-	virtual void translate() = 0;
+	virtual void translate(int, int) = 0;
 	virtual const char *toXmlElement() = 0;
 	virtual const char *toPropertyValue(const char *, const int) = 0;
 	virtual const char *toPropertyValue(const char *, const char *) = 0;

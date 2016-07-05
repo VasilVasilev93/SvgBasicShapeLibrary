@@ -60,6 +60,9 @@
     <ClCompile Include="InvalidSvgElementPropertyValueException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SvgFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Rect.h">
@@ -78,9 +81,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InvalidSvgFileSyntaxException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SvgFileValidator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SvgBasicShape.h">

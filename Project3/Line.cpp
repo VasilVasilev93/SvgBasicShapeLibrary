@@ -47,7 +47,7 @@ void Line::setProperty(const char *name, const int value) {
 
 void Line::print() { }
 
-void Line::translate() { }
+void Line::translate(int x, int y) { }
 
 const char *Line::toXmlElement() {
 	char *element = new char[MAX_SHAPE_LEN];

@@ -8,11 +8,16 @@
 class SvgFile {
 private:
 	SvgBasicShape **shapes;
+	int index;
 	SvgBasicShapeReader *reader;
 	SvgBasicShapeWriter *writer;
 
+	void deleteShapes();
+	void shiftShapes(int);
+
 public:
 	SvgFile();
+	~SvgFile();
 
 	void create(char *, char *, char *, int, int, int, int, int, int, int);
 	void erase(int);

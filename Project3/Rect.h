@@ -25,7 +25,7 @@ public:
 	void setProperty(const char *, const int);
 
 	void print();
-	void translate();
+	void translate(int, int);
 
 	const char *toXmlElement();
 	const char *toPropertyValue(const char *, const int);
